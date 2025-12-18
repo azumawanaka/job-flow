@@ -1,16 +1,19 @@
-import { Suspense } from 'react';
-
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 
-import { Providers } from '@/redux/store/providers';
+import ThemeRegistry from '@/lib/theme-registry';
+import Header from '@/components/common/header';
 
-import './globals.css';
-import ThemeRegistry from '@/lib/mui/theme-registry';
+import '@/styles/globals.css';
+import { Suspense } from 'react';
+
+import { Main } from './page-styles';
+import { Providers } from '@/redux/store/providers';
+import Footer from '@/components/common/footer';
 
 export const metadata = {
-  title: 'JobFlow',
-  description: 'Make your job searching easier with JobFlow.',
+  title: "Fil's Portfolio",
+  description: 'Fullstack Web Developer - Portfolio',
 };
 
 const inter = Inter({
@@ -19,7 +22,7 @@ const inter = Inter({
 });
 
 const RouteProgress = dynamic(
-  () => import('@/components/shared/RouteProgress')
+  () => import('@/components/common/route-progress')
 );
 
 export default function RootLayout({
@@ -33,7 +36,11 @@ export default function RootLayout({
         <ThemeRegistry>
           <Suspense fallback={<RouteProgress />}>
             <RouteProgress />
-            <Providers>{children}</Providers>
+            <Providers>
+              <Header />
+              <Main>{children}</Main>
+              <Footer />
+            </Providers>
           </Suspense>
         </ThemeRegistry>
       </body>
