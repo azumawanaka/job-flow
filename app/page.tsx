@@ -64,11 +64,10 @@ export default function AuthPortal() {
                   <Tab label='Sign up' />
                 </Tabs>
 
-                {authTabValue === 0 && (
-                  <LoginCard setAuthTabValue={toggleTab} />
-                )}
-                {authTabValue === 1 && (
+                {authTabValue === 1 ? (
                   <SignupCard setAuthTabValue={toggleTab} />
+                ) : (
+                  <LoginCard setAuthTabValue={toggleTab} />
                 )}
               </Item>
             </Grid>

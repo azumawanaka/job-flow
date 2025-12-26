@@ -28,7 +28,8 @@ export function middleware(request: NextRequest) {
   }
 
   // ===== AUTH PROTECTION =====
-  const protectedPaths = ['/admin', '/dashboard', '/settings'];
+  // const protectedPaths = ['/admin', '/dashboard', '/settings'];
+  const protectedPaths = ['/admin', '/settings'];
   const isProtectedPath = protectedPaths.some((path) =>
     pathname.startsWith(path)
   );
@@ -36,7 +37,7 @@ export function middleware(request: NextRequest) {
   if (isProtectedPath) {
     const hasAuth = request.cookies.get('session')?.value;
     if (!hasAuth) {
-      return NextResponse.redirect(new URL('/login', request.url));
+      return NextResponse.redirect(new URL('/', request.url));
     }
   }
 
