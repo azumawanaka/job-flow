@@ -48,7 +48,7 @@ export const BookSpread = styled(Box)(({ theme }) => ({
     minHeight: 'auto',
     height: 'auto',
     borderRadius: 'var(--radius-lg)',
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(0),
   },
 
   [theme.breakpoints.down('sm')]: {
@@ -81,6 +81,7 @@ export const PageLeft = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down('sm')]: {
     padding: '32px 16px',
+    minHeight: '98dvh',
   },
 }));
 
@@ -104,6 +105,7 @@ export const PageRight = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down('sm')]: {
     padding: '32px 16px',
+    minHeight: '98dvh',
   },
 }));
 
@@ -221,7 +223,6 @@ export const ContactRow = styled(Box)(({ theme }) => ({
     fontSize: '12px',
     gap: '8px',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
   },
 
   '& .contact-icon': {
