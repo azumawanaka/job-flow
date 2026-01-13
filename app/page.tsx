@@ -1,23 +1,42 @@
 'use client';
 
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 
-export default function AuthPortal() {
+import {
+  MainStage,
+  BookSpread,
+  PageLeft,
+  PageRight,
+  SpineCenter,
+  OuterContainer,
+} from '@/styles/page.styles';
+import AboutMe from '@/components/pages/AboutMe';
+import TabNavigation from '@/components/layouts/TabNavigations';
+import FooterPageIndicator from '@/components/layouts/FooterPageIndicator';
+import ProfileSideBar from '@/components/layouts/ProfileSideBar';
+
+export default function Welcome() {
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        display: 'grid',
-        placeItems: 'center',
-        overflow: 'hidden',
-      }}
-    >
-      <Container maxWidth='md' disableGutters>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque aliquam
-        similique exercitationem excepturi saepe culpa et voluptate corporis
-        nemo voluptas soluta, molestias labore laborum recusandae harum ullam
-        quisquam, accusantium eum?
+    <OuterContainer>
+      <Container maxWidth='lg' disableGutters>
+        <MainStage>
+          <BookSpread>
+            <PageLeft>
+              <ProfileSideBar />
+            </PageLeft>
+
+            {/* Middle Spine */}
+            <SpineCenter />
+
+            {/* Right Page: Content */}
+            <PageRight>
+              <TabNavigation />
+              <AboutMe />
+              <FooterPageIndicator />
+            </PageRight>
+          </BookSpread>
+        </MainStage>
       </Container>
-    </Box>
+    </OuterContainer>
   );
 }

@@ -22,7 +22,9 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/styles/*": ["styles/*"],
+      "@/constants/*": ["constants/*"]
     }
   },
   "include": [

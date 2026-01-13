@@ -10,10 +10,17 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-  // Add CSP header (optional but recommended)
+  // Add CSP header - UPDATED to allow external images
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: https://res.cloudinary.com https://storage.googleapis.com",
+      "font-src 'self' data:",
+      "connect-src 'self'",
+    ].join('; ')
   );
 
   // ===== SMART REDIRECTS =====

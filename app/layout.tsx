@@ -3,13 +3,11 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 
-import { Providers } from '@/redux/store/providers';
-
 import './globals.css';
 import ThemeRegistry from '@/lib/mui/theme-registry';
 
 export const metadata = {
-  title: 'JobFlow',
+  title: 'Filjumar - Fullstack Web Developer',
   description: '',
 };
 
@@ -33,7 +31,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <Suspense fallback={<RouteProgress />}>
             <RouteProgress />
-            <Providers>{children}</Providers>
+            {children}
           </Suspense>
         </ThemeRegistry>
       </body>
