@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Box, Container } from '@mui/material';
 
 import {
@@ -15,8 +16,11 @@ import TabNavigation from '@/components/layouts/TabNavigations';
 import FooterPageIndicator from '@/components/layouts/FooterPageIndicator';
 import ProfileSideBar from '@/components/layouts/ProfileSideBar';
 import TechnicalProficiency from '@/components/pages/Skills';
-import { useState } from 'react';
 import TabPanel from '@/components/TabPanel';
+import { AnimatePresence } from 'framer-motion';
+import AnimatedTab from '@/components/AnimatedTab';
+import UnderConstruction from '@/components/UnderConstruction';
+import Projects from '@/components/pages/Projects';
 
 export default function Welcome() {
   const [value, setValue] = useState(0);
@@ -34,19 +38,45 @@ export default function Welcome() {
               <ProfileSideBar />
             </PageLeft>
 
-            {/* Middle Spine */}
             <SpineCenter />
 
-            {/* Right Page: Content */}
             <PageRight>
               <Box className='content-container'>
                 <TabNavigation handleChange={handleChange} value={value} />
-                <TabPanel value={value} index={0}>
-                  <AboutMe />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                  <TechnicalProficiency />
-                </TabPanel>
+
+                <AnimatePresence mode='wait'>
+                  {value === 0 && (
+                    <TabPanel value={value} index={value} key={`tab-${value}`}>
+                      <AnimatedTab>
+                        <AboutMe />
+                      </AnimatedTab>
+                    </TabPanel>
+                  )}
+
+                  {value === 1 && (
+                    <TabPanel value={value} index={value} key={`tab-${value}`}>
+                      <AnimatedTab>
+                        <TechnicalProficiency />
+                      </AnimatedTab>
+                    </TabPanel>
+                  )}
+
+                  {value === 2 && (
+                    <TabPanel value={value} index={value} key={`tab-${value}`}>
+                      <AnimatedTab>
+                        <Projects />
+                      </AnimatedTab>
+                    </TabPanel>
+                  )}
+
+                  {value === 3 && (
+                    <TabPanel value={value} index={value} key={`tab-${value}`}>
+                      <AnimatedTab>
+                        <UnderConstruction />
+                      </AnimatedTab>
+                    </TabPanel>
+                  )}
+                </AnimatePresence>
               </Box>
 
               <FooterPageIndicator value={value} setValue={setValue} />

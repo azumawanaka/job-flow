@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import { NavTab, TopNav } from '@/styles/page.styles';
 import { useTheme } from '@emotion/react';
 import { useMediaQuery } from '@mui/material';
+import { NavigationTabs } from '@/constants/navigation-tabs.constants';
 
 interface TabNavigationsProps {
   value: number;
@@ -21,22 +22,16 @@ const TabNavigations = (props: TabNavigationsProps) => {
         value={value}
         onChange={handleChange}
         aria-label='basic tabs'
-        variant={isMobile ? 'scrollable' : 'standard'}
+        variant={'standard'}
         scrollButtons={isMobile ? 'auto' : false}
-        allowScrollButtonsMobile
-        sx={{
-          minHeight: 48,
-          '& .MuiTab-root': {
-            minWidth: 'auto', // Allow tabs to shrink
-            padding: isMobile ? '6px 12px' : '12px 16px',
-            fontSize: isMobile ? '0.70rem' : '1rem',
-          },
-        }}
       >
-        <NavTab label='About' aria-controls={`simple-tabpanel-0`} />
-        <NavTab label='Skills' aria-controls={`simple-tabpanel-1`} />
-        <NavTab label='Projects' aria-controls={`simple-tabpanel-2`} />
-        <NavTab label='Contact' aria-controls={`simple-tabpanel-3`} />
+        {NavigationTabs.map((tab, index) => (
+          <NavTab
+            key={index}
+            label={tab.label}
+            aria-controls={`tabpanel-${index}`}
+          />
+        ))}
       </Tabs>
     </TopNav>
   );

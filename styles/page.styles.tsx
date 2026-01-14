@@ -1,4 +1,12 @@
-import { styled, Box, Button, IconButton, Tab, keyframes } from '@mui/material';
+import {
+  styled,
+  Box,
+  Button,
+  IconButton,
+  Tab,
+  Typography,
+} from '@mui/material';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 export const OuterContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -110,6 +118,14 @@ export const PageRight = styled(Box)(({ theme }) => ({
 
   '& .content-container': {
     minHeight: '540px',
+
+    '& .tab-panel-content': {
+      padding: '24px 0',
+
+      [theme.breakpoints.down('sm')]: {
+        padding: '0 16px',
+      },
+    },
   },
 }));
 
@@ -154,6 +170,13 @@ export const AvatarLarge = styled(Box)(({ theme }) => ({
     width: '120px',
     height: '120px',
     marginBottom: '20px',
+  },
+
+  '& img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '50%',
   },
 }));
 
@@ -310,6 +333,27 @@ export const TopNav = styled('nav')(({ theme }) => ({
     gap: '4px',
     marginBottom: '20px',
     overflowX: 'auto',
+  },
+
+  '& .MuiTabs-flexContainer': {
+    minHeight: 48,
+    '& .MuiTab-root': {
+      minWidth: 'auto',
+      padding: '12px 16px',
+      fontSize: '1rem',
+
+      [theme.breakpoints.down('sm')]: {
+        padding: '6px 12px',
+        fontSize: '0.70rem',
+      },
+    },
+    '& button.Mui-selected': {
+      color: 'var(--primary)',
+    },
+  },
+
+  '& .MuiTabs-indicator': {
+    backgroundColor: 'var(--primary)',
   },
 }));
 
@@ -515,4 +559,47 @@ export const SkillCard = styled('div')(({ theme }) => ({
   fontSize: '13px',
   color: 'var(--secondary-foreground)',
   fontWeight: 500,
+}));
+
+export const GradientBackground = styled(Box)(({ theme }) => ({
+  borderRadius: theme.shape.borderRadius * 3,
+  border: `1px solid ${theme.palette.divider}`,
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '-50%',
+    left: '-50%',
+    width: '200%',
+    height: '200%',
+    animation: 'float 20s linear infinite',
+  },
+
+  '@keyframes float': {
+    '0%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(360deg)' },
+  },
+}));
+
+export const FloatingIcon = styled(ConstructionIcon)(({ theme }) => ({
+  fontSize: '6rem',
+  color: 'var(--primary)',
+  filter: 'drop-shadow(0 10px 20px var(--muted))',
+  animation: 'floatIcon 3s ease-in-out infinite',
+
+  '@keyframes floatIcon': {
+    '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+    '50%': { transform: 'translateY(-20px) rotate(10deg)' },
+  },
+}));
+
+export const GradientText = styled(Typography)(({ theme }) => ({
+  background: `linear-gradient(60deg, 
+    var(--primary), 
+    var(--secondary))`,
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
 }));

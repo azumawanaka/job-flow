@@ -23,14 +23,9 @@ const ProfileSideBar = () => {
           alt='Filjumar Fullstack Web Developer'
           width={100}
           height={100}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            borderRadius: '50%',
-          }}
-          unoptimized
           loading='eager'
+          draggable={false}
+          unoptimized
         />
       </AvatarLarge>
       <DevName>Filjumar</DevName>
