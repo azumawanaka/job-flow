@@ -29,8 +29,8 @@ export default function RootLayout({
     <html lang='en' className={inter.variable}>
       <body suppressHydrationWarning>
         <ThemeRegistry>
-          <Suspense fallback={<RouteProgress />}>
-            {/* <RouteProgress /> */}
+          <Suspense fallback={null}>
+            <RouteProgress />
             {children}
           </Suspense>
         </ThemeRegistry>
