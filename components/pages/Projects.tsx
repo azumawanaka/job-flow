@@ -15,12 +15,13 @@ const Projects: React.FC<SelectedWorksProps> = () => {
   return (
     <ChapterContent>
       <HeaderTitle title='Selected Works' page='03' />
+      <UnderConstruction />
 
-      <ProjectsContainer>
+      {/* <ProjectsContainer>
         {SelectedProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
-      </ProjectsContainer>
+      </ProjectsContainer> */}
     </ChapterContent>
   );
 };
